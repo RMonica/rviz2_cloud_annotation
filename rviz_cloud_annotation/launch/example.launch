@@ -1,0 +1,25 @@
+<launch>
+
+  <node pkg="rviz_cloud_annotation" exec="rviz_cloud_annotation_node" name="rviz_cloud_annotation_node" output="screen">
+    <param name="update_topic" type="str" value="/rviz_cloud_annotation" />
+    <param name="cloud_filename" type="str" value="$(find-pkg-share rviz_cloud_annotation)/data/example.pcd" />
+
+    <param name="annotation_read_filename" type="str" value="$(find-pkg-share rviz_cloud_annotation)/data/example.ann" />
+    <param name="annotation_write_filename" type="str" value="$(find-pkg-share rviz_cloud_annotation)/data/example.ann" />
+    <param name="annotation_cloud" type="str" value="$(find-pkg-share rviz_cloud_annotation)/data/example_annotated.pcd" />
+    <param name="label_names_filename" type="str" value="$(find-pkg-share rviz_cloud_annotation)/data/example.txt" />
+
+    <param name="label_size" type="float" value="0.002" />
+    <param name="neigh_search_type" type="int" value="2" />
+    <param name="neigh_search_params" type="str" value="10" />
+
+    <param name="normal_importance" type="float" value="0.5" />
+    <param name="color_importance" type="float" value="1.0" />
+    <param name="position_importance" type="float" value="0.1" />
+
+    <param name="show_zero_weight_control_points" type="bool" value="false" />
+  </node>
+
+  <node pkg="rviz2" name="rviz_cloud_annotation_rviz" exec="rviz2" output="screen" args="-d $(find-pkg-share rviz_cloud_annotation)/rviz/annotation.rviz" />
+
+</launch>
